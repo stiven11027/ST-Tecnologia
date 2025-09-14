@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto | ST Tecnología</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mapa { margin-top: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+    iframe { width: 100%; height: 350px; border: 0; }
+
+    .pagos { margin-top: 2rem; }
+    .botones-pago { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn-pago {
+      flex: 1 1 220px; padding: 0.8rem; border-radius: 8px; text-align: center;
+      font-weight: bold; text-decoration: none; color: #fff; display: flex;
+      align-items: center; justify-content: center; gap: 0.5rem;
+      transition: transform 0.2s ease, filter 0.3s ease; cursor: pointer;
+    }
+    .btn-pago img { height: 24px; }
+    .btn-pago:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .mercadopago { background: #009ee3; }
+    .nequi { background: #5f259f; }
+
+    /* Modal QR */
+    .modal {
+      display: none; position: fixed; z-index: 999;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center; align-items: center;
+    }
+    .modal-content {
+      background: var(--card); padding: 1rem;
+      border-radius: 12px; text-align: center;
+      box-shadow: var(--shadow); max-width: 320px;
+    }
+    .modal-content img {
+      max-width: 100%; border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,207,255,0.4);
+    }
+    .modal-content h4 {
+      margin-bottom: .5rem; color: var(--azul-cian);
+    }
+    .close {
+      position: absolute; top: 20px; right: 25px;
+      font-size: 2rem; color: #fff; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="ST Tecnología logo">
+    </div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="index.html#mision">Misión y Visión</a>
+      <a class="active" href="contacto.html">Contacto</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section class="section">
+      <h2>📞 Contáctanos</h2>
+      <p>Estamos listos para ayudarte con cualquier consulta o solicitud de servicio.</p>
+
+      <div class="card" style="margin-top:1.5rem;">
+        <h3>Datos de contacto</h3>
+        <p>📞 Tel: +57 302 529 2660</p>
+        <p>📧 Email: contacto@sttecnologia.com</p>
+        <p>📍 Silvania, Cundinamarca, Colombia</p>
+      </div>
+
+      <div class="pagos">
+        <h3>💳 Métodos de pago</h3>
+        <div class="botones-pago">
+          <a class="btn-pago mercadopago" href="https://link.mercadopago.com.co/sttecnologia1" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/MercadoPago.svg" alt="Mercado Pago">
+            Mercado Pago
+          </a>
+          <div class="btn-pago nequi" id="abrirNequi">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Nequi_logo.svg" alt="Nequi">
+            Nequi
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.118889!2d-74.3834532!3d4.4407047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f0fe30eca5ffb%3A0x30feeb65c037c739!2sVereda%20Azafranal%20V%C3%ADa%20Panamericana%20Puente%20Peatonal!5e0!3m2!1ses!2sco!4v1694567890000!5m2!1ses!2sco"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <a class="btn" href="index.html">⬅ Volver al Inicio</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal QR Nequi -->
+<div class="modal" id="modalNequi">
+  <span class="close" id="cerrarNequi">&times;</span>
+  <div class="modal-content">
+    <h4>📲 Escanea para pagar con Nequi</h4>
+    <img src="qr-nequi.png" alt="QR Nequi">
+  </div>
+</div>
+
+<a class="whatsapp" href="https://wa.me/573025292660?text=Hola%20ST%20Tecnolog%C3%ADa,%20necesito%20informaci%C3%B3n" target="_blank">💬</a>
+
+<script>
+  const abrir = document.getElementById('abrirNequi');
+  const modal = document.getElementById('modalNequi');
+  const cerrar = document.getElementById('cerrarNequi');
+
+  abrir.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
+
+  cerrar.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+</script>
+</body>
